@@ -1,5 +1,5 @@
 all:
-	./b2 cxxflags="-I/usr/include/python3.3m"
+	./b2 cxxflags="-I/usr/include/python3.4m"
 
 install:
 	./b2 install

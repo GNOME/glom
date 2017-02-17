@@ -2,11 +2,11 @@
     "app-id": "org.glom.Glom",
     "version": "master",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.18",
+    "runtime-version": "3.22",
     "sdk": "org.gnome.Sdk",
     "command": "glom",
     "rename-desktop-file": "glom.desktop",
-    "finish-args": ["--share=network" "--socket=x11", "--filesystem=host" ],
+    "finish-args": ["--share=network", "--socket=x11", "--filesystem=host" ],
     "build-options" : {
         "cflags": "-O2 -g",
         "cxxflags": "-O2 -g",
@@ -18,8 +18,8 @@
     "modules": [
         {
             "name": "gettext",
-            "cleanup": [ "/share" "/bin"],
-            "config-opts": [ "--disable-java" "--disable-c++" ],
+            "cleanup": [ "/share", "/bin"],
+            "config-opts": [ "--disable-java", "--disable-c++" ],
             "sources": [
                 {
                     "type": "archive",
@@ -45,8 +45,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.6/libsigc++-2.6.2.tar.xz",
-                    "sha256": "fdace7134c31de792c17570f9049ca0657909b28c4c70ec4882f91a03de54437"
+                    "url": "http://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.9/libsigc++-2.9.3.tar.xz",
+                    "sha256": "0bf9b301ad6198c550986c51150a646df198e8d1d235270c16486b0dda30097f"
                 }
             ]
         },
@@ -56,8 +56,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/GNOME/sources/glibmm/2.46/glibmm-2.46.2.tar.xz",
-                    "sha256": "7221a01a768c1cce2bb994cb6ebfe634246dba4788f910484d04e3b0d903a3c8"
+                    "url": "http://ftp.gnome.org/pub/GNOME/sources/glibmm/2.47/glibmm-2.47.92.tar.xz",
+                    "sha256": "47cfcd960cbd78e1e960a04aa650227e7ce57874121f0f014140d3e40c928900"
                 }
             ]
         },
@@ -113,24 +113,24 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://ftp.acc.umu.se/pub/gnome/sources/libxml++/2.91/libxml++-2.91.2.tar.xz",
-                    "sha256": "daa1a00751e2867b0d0b73985d1afc0bf3514f2826047fc980e8d104213c9040"
+                    "url": "http://ftp.acc.umu.se/pub/gnome/sources/libxml++/3.0/libxml++-3.0.1.tar.xz",
+                    "sha256": "19dc8d21751806c015179bc0b83f978e65c878724501bfc0b6c1bcead29971a6"
                 }
             ]
         },
         {
             "name": "avahi",
             "cleanup": [ "/bin" ],
-            "config-opts": [ "--with-distro=none" "--disable-qt3" "--disable-qt4" "--disable-libdaemon" "--disable-python" "--disable-mono" "--disable-introspection" "--disable-core-docs" ],
+            "config-opts": [ "--with-distro=none", "--disable-qt3", "--disable-qt4", "--disable-libdaemon", "--disable-python", "--disable-mono", "--disable-introspection", "--disable-core-docs" ],
             "sources": [
                 {
                     "type": "archive",
                     "url": "http://www.avahi.org/download/avahi-0.6.31.tar.gz",
                     "sha256": "8372719b24e2dd75de6f59bb1315e600db4fd092805bd1201ed0cb651a2dab48"
-                }
+                },
                 {
                     "type": "patch",
-                    "path": "glom-xdg-app-builder/avahi_gtk_undisable_deprecated.patch"
+                    "path": "./avahi_gtk_undisable_deprecated.patch"
                 }
             ]
         },
@@ -147,7 +147,7 @@
         },
         {
             "name": "gtksourceview",
-            "config-opts": [ "--disable-gtk-doc" "--disable-introspection" "--disable-vala" ],
+            "config-opts": [ "--disable-gtk-doc", "--disable-introspection", "--disable-vala" ],
             "sources": [
                 {
                     "type": "archive",
@@ -205,8 +205,8 @@
         },
         {
             "name": "evince-view",
-            "cleanup": [ "/bin" "/share/help" ],
-            "config-opts": [ "--disable-gtk-doc" "--disable-nautilus" "--disable-browser-plugin" "--disable-thumbnailer" "--disable-previewer" "--disable-introspection" ],
+            "cleanup": [ "/bin", "/share/help" ],
+            "config-opts": [ "--disable-gtk-doc", "--disable-nautilus", "--disable-browser-plugin", "--disable-thumbnailer", "--disable-previewer", "--disable-introspection" ],
             "sources": [
                 {
                     "type": "archive",
@@ -228,7 +228,7 @@
         },
         {
             "name": "mysql",
-            "cleanup": [ "/bin" "/mysql-test" "/scripts" "/share"  "/sql-bench" "/support-files" "/INSTALL-BINARY" "/README" "/COPYING" ],
+            "cleanup": [ "/bin", "/mysql-test", "/scripts", "/share", "/sql-bench", "/support-files", "/INSTALL-BINARY", "/README", "/COPYING" ],
             "cmake": true,
             "sources": [
                 {
@@ -240,7 +240,7 @@
         },
         {
             "name": "libgda-5.0",
-            "config-opts": [ "--disable-gtk-doc" "-with-help=no" "--with-ui=no" "--disable-tools" "--enable-gda-gi" "--enable-gi-system-install=no" ],
+            "config-opts": [ "--disable-gtk-doc", "-with-help=no", "--with-ui=no", "--disable-tools", "--enable-gda-gi", "--enable-gi-system-install=no" ],
             "sources": [
                 {
                     "type": "archive",
@@ -263,22 +263,26 @@
         },
         {
             "name": "boost-python",
-            "config-opts": [ "--with-libraries=python" "--with-python-version=3.3" ],
+            "config-opts": [ "--with-libraries=python", "--with-python-version=3.3" ],
             "build-options" : { "cxxflags": "-O2 -g -std=c++11" },
             "sources": [
                 {
                     "type": "archive",
                     "url": "http://downloads.sourceforge.net/project/boost/boost/1.59.0/boost_1_59_0.tar.gz?r=http%3A%2F%2Fwww.boost.org%2Fusers%2Fhistory%2Fversion_1_59_0.html&ts=1449780852&use_mirror=netix",
                     "sha256": "47f11c8844e579d02691a607fbd32540104a9ac7a2534a8ddaef50daf502baac"
-                }
+                },
                 {
                     "type": "file",
-                    "path": "glom-xdg-app-builder/boost_python_configure",
+                    "path": "./boost_python_configure",
                     "dest-filename": "configure"
-                }
+                },
+                {
+                    "type": "shell",
+                    "commands": [ "chmod +x configure" ]
+                },
                 {
                     "type": "file",
-                    "path": "glom-xdg-app-builder/boost_python_Makefile",
+                    "path": "./boost_python_Makefile",
                     "dest-filename": "Makefile"
                 }
             ]
@@ -288,13 +292,14 @@
             "config-opts": [ "--disable-documentation" ],
             "build-options" : { "cxxflags": "-O2 -g -std=c++11",
                 "env": {
-                    "PYTHON": "python3.3m"
+                    "PYTHON": "python3.4m"
                 }
             },
             "sources": [
                 {
                     "type": "git",
-                    "url": ".git"
+                    "url": "git://git.gnome.org/glom",
+                    "branch": "c1e4cdba2055c6fd18337352807a3f0f16ec5fa5"
                 }
             ]
         }
